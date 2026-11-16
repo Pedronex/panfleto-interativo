@@ -496,9 +496,10 @@ button {
   min-height: 1.4em;
   margin: 8px 4px 0;
   font-size: .95rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--verde);
 }
+.resumo strong { font-weight: 700; }
 
 @media (min-width: 900px) {
   .resumo { margin: 2px 2px 6px; font-size: 1.15rem; }

@@ -119,7 +119,8 @@ function atualizar({ rolar = false } = {}) {
   el.lista.hidden = !pratoSocial;
 
   atualizarFiltrosAtivos(filtrando);
-  el.resumo.textContent = textoResumo(filtrando, visiveis);
+  if (filtrando || pratoSocial) el.resumo.textContent = textoResumo(visiveis);
+  else el.resumo.innerHTML = TEXTOS.dica;
   el.gavetaOk.textContent = pratoSocial
     ? `Ver ${plural(total, "prato social", "pratos sociais")}`
     : `Ver ${plural(total, "quiosque", "quiosques")}`;
@@ -127,7 +128,7 @@ function atualizar({ rolar = false } = {}) {
   if (rolar) rolarParaPainel();
 }
 
-function textoResumo(filtrando, visiveis) {
+function textoResumo(visiveis) {
   const nomes = [...estado.tipos].join(", ");
   const total = visiveis.length;
   if (estado.pratoSocial) {
@@ -135,7 +136,7 @@ function textoResumo(filtrando, visiveis) {
     const faixa = `de ${moeda.format(Math.min(...precos))} a ${moeda.format(Math.max(...precos))}`;
     return ["Prato social", nomes, `${plural(total, "opção", "opções")}, ${faixa}`].filter(Boolean).join(" · ");
   }
-  return filtrando ? `${nomes} · ${plural(total, "quiosque", "quiosques")}` : TEXTOS.dica;
+  return `${nomes} · ${plural(total, "quiosque", "quiosques")}`;
 }
 
 function atualizarFiltrosAtivos(filtrando) {

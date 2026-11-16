@@ -60,6 +60,7 @@ const QUIOSQUES = [
 ];
 
 const TEXTOS = {
-  dica: "Toque no número de um quiosque para ver o cardápio",
+  // HTML permitido: <strong> marca o trecho em negrito.
+  dica: "Toque no número de um quiosque para ver o <strong>cardápio</strong>",
   avisoPratoSocial: "Na indisponibilidade do prato social, será oferecido um prato do cardápio como substituto no mesmo valor.",
 };
